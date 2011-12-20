@@ -1,0 +1,5 @@
+# Spanish strings go here for Rails i18n
+es:
+  application_name: "Mis proyectos"
+  subprojects_see: "Ver subproyectos"
+  back: "Volver"

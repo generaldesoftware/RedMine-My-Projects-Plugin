@@ -1,0 +1,29 @@
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'mosaic.css', :plugin => 'redmine_gsc_my_projects' %>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+	<%= javascript_include_tag 'mosaic.1.0.1.js', :plugin => 'redmine_gsc_my_projects' %>	
+	<script type="text/javascript">  
+		jQuery(function($){
+			$('.bar2').mosaic({
+				animation	:	'slide',		//fade or slide
+				hover_y		:	'-150px'					
+			});				
+		});		
+	</script>
+	
+	<style type="text/css">
+		/*Demo Styles*/
+		body{ background:#e9e8e4; }
+			#content{ width:845px; margin:20px auto; padding:10px 30px; }
+			.clearfix{ display: block; height: 0; clear: both; visibility: hidden; }
+					
+			.details{ margin:15px 20px; }	
+				h4{ font:300 16px 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height:160%; letter-spacing:0.15em; color:#fff; text-shadow:1px 1px 0 rgb(0,0,0); }
+				p{ font:300 12px 'Lucida Grande', Tahoma, Verdana, sans-serif; color:#aaa; text-shadow:1px 1px 0 rgb(0,0,0);}
+				a{ text-decoration:none; }	
+	</style>
+<% end %>
+
+<% html_title "#{l(:application_name)}" %>		
+<h2><%= l(:application_name) %></h2>
+<%= render_project_hierarchy(@showProjects, @allProjects) %>
