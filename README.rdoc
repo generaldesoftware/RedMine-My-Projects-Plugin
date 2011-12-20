@@ -1,4 +1,4 @@
 = gsc_my_projects
 
-Description goes here
+Redmine Plugin
  
