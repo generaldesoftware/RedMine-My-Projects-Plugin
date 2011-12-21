@@ -4,7 +4,7 @@ Redmine::Plugin.register :redmine_gsc_my_projects do
   name 'Redmine GSC My Projects plugin'
   author 'Gonzalo Garcia Jaubert'
   description 'This is a plugin for Redmine. Show only projects you are member of (with a little of jquery).'
-  version '0.0.1'
+  version '0.0.2'
   url 'http://www.gsc.es'
   author_url 'http://www.gsc.es'
 

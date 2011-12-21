@@ -26,12 +26,22 @@ module MyProjectsHelper
 				s << "<div class='mosaic-overlay'>"						
 					s = s << htmlProject(currentProject) # Get the a href to project
 					s = s << linkToSubProjects(currentProject, allProjects) # Get the subprojects of current project
-					s = s << linkToBack(currentProject, allProjects) # Get the link to parent project
+					s = s << linkToBackDetail(currentProject, allProjects) # Get the link to parent project
 				s << "</div>"
 				imgUrl = linkToImage(currentProject)
 				s << "<div class='mosaic-backdrop'><img src='#{imgUrl}'/></div>"			
 			s << "</div>"	
 		end
+		return s
+	end
+	
+	def render_title(filterProjects, allProjects)
+		s= ''
+		
+		s = s << "<h2>#{l(:application_name)}</h2>"
+		currentProject = filterProjects[0]
+		s = s << linkToBackTitle(currentProject, allProjects) # Get the link to parent project
+		
 		return s
 	end
   
@@ -65,7 +75,8 @@ private
 	
 	# link to parent	
 	def linkToBack(currentProject, allProjects)
-		s = ''
+		#s = ''
+		parentProjectLink = ''
 		parentProject = getFirstParent(currentProject, allProjects)
 		if (parentProject != nil)
 			parentParentProject = getFirstParent(parentProject, allProjects)
@@ -74,7 +85,25 @@ private
 			else
 				parentProjectLink = url_for (:controller => 'my_projects', :action => 'index', :id => nil)					
 			end
-			s << "<a href='#{parentProjectLink}'>"
+		end
+		return parentProjectLink
+	end
+	
+	def linkToBackTitle(currentProject, allProjects)
+		s = ''
+		parentProjectLink = linkToBack(currentProject, allProjects) # Get the link to parent project
+		if (parentProjectLink != '')
+			s = "<div class=''><a href='#{parentProjectLink}'>#{l(:back)}</a></div>"
+		end
+		
+		return s	
+	end
+	
+	def linkToBackDetail(currentProject, allProjects)
+		s = ''
+		parentProjectLink = linkToBack(currentProject, allProjects) # Get the link to parent project
+		if (parentProjectLink != '')
+			s = "<a href='#{parentProjectLink}'>"
 			s << "<div class='details'><p>#{l(:back)}</p></div>"
 			s << "</a>"					
 		end

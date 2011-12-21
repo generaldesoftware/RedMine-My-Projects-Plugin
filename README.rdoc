@@ -1,32 +1,32 @@
-= gsc_my_projects
+Plugin gsc_my_projects
 
-*This plugin only show your Projects with a _mosaic_ view of your projects:*
+Description:
+------------
+This plugin only show your Projects with a _mosaic_ view of your projects. This plugin add a new menu called "My Projects". 
 
-This plugin add a new menu called "My Projects". 
+Developer:
+---------
+This plugin is developed by "General de Software" (http://www.gsc.es)
 
-h3. Developer
-
-This plugin is developed by "General de Software":http://www.gsc.es
-
-h2. Features:
-
+Features:
+---------
 This plugin display a list of projects where the user has a role.
 
 # Only "My projects" are displayed. Even if you are Administrator
 # Multilanguage (english, spanish)
-# _Mosaic view_ (jquery plugin from: http://buildinternet.com/project/mosaic/)
+# Mosaic view (jquery plugin from: http://buildinternet.com/project/mosaic/)
 # No configuration. Only one image (logo.png) for each project
 
-h2. Configure plugin
-
+Configure plugin:
+----------------
 This plugin expect find logo.png in the files section of each project. If logo.png is not found, it will display a generic image.
 
-h3. logo.png
-
+Logo image
+----------
 The logo.png image must be 400x250 px. 
 
-h2. How to use
-
+How to use
+----------
 # Click in the project name to navigate to the project
 # Click in "Subprojects" to list the child projects
 # Click in back to list the parent projects.

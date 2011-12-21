@@ -25,5 +25,9 @@
 <% end %>
 
 <% html_title "#{l(:application_name)}" %>		
-<h2><%= l(:application_name) %></h2>
+
+
+<%= render_title(@showProjects, @allProjects) %>
 <%= render_project_hierarchy(@showProjects, @allProjects) %>
+
+
