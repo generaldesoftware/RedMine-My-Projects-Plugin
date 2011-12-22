@@ -12,10 +12,10 @@ Features:
 ---------
 This plugin display a list of projects where the user has a role.
 
-# Only "My projects" are displayed. Even if you are Administrator
-# Multilanguage (english, spanish)
-# Mosaic view (jquery plugin from: http://buildinternet.com/project/mosaic/)
-# No configuration. Only one image (logo.png) for each project
+* Only "My projects" are displayed. Even if you are Administrator
+* Multilanguage (english, spanish)
+* Mosaic view (jquery plugin from: http://buildinternet.com/project/mosaic/)
+* No configuration. Only one image (logo.png) for each project
 
 Configure plugin:
 ----------------
@@ -27,8 +27,17 @@ The logo.png image must be 400x250 px.
 
 How to use
 ----------
-# Click in the project name to navigate to the project
-# Click in "Subprojects" to list the child projects
-# Click in back to list the parent projects.
+
+* Click in the project name to navigate to the project
+* Click in "Subprojects" to list the child projects
+* Click in back to list the parent projects.
 
 
+Installation notes
+-------------------
+To install this plugin:
+
+1. Simple download it and extract its content into the Redmine plugin directory. 
+2. IMPORTANT: Rename the folder to: redmine_gsc_my_projects. 
+3. Now run rake db:migrate_plugins from the Redmine directory 
+4. Restart server.
