@@ -1,0 +1,5 @@
+# German strings go here for Rails i18n
+de:
+  application_name: "Meine Projekte"
+  subprojects_see: "Unterprojekte"
+  back: "Zurück"
