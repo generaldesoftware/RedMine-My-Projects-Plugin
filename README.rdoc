@@ -1,8 +1,12 @@
 Plugin gsc_my_projects
 
+Redmine link: http://www.redmine.org/plugins/gsc_my_projects
+
 Description:
 ------------
 This plugin only show your Projects with a _mosaic_ view of your projects. This plugin add a new menu called "My Projects". 
+
+Redmine version: 2.1.2
 
 Developer:
 ---------

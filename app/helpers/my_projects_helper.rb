@@ -19,7 +19,7 @@ module MyProjectsHelper
 
 	# Render the My Projects box
 	def render_project_hierarchy(filterProjects, allProjects)
-		s = ""
+		s = ''
 		
 		filterProjects.each do |currentProject|
 			s << "<div class='mosaic-block bar2'>"
@@ -32,7 +32,7 @@ module MyProjectsHelper
 				s << "<div class='mosaic-backdrop'><img src='#{imgUrl}'/></div>"			
 			s << "</div>"	
 		end
-		return s
+		return s.html_safe
 	end
 	
 	def render_title(filterProjects, allProjects)
@@ -42,7 +42,7 @@ module MyProjectsHelper
 		currentProject = filterProjects[0]
 		s = s << linkToBackTitle(currentProject, allProjects) # Get the link to parent project
 		
-		return s
+		return s.html_safe
 	end
   
 private
@@ -52,7 +52,7 @@ private
 		s = ''
 		imgLink = url_for (:action => 'show', :controller => 'projects', :id => currentProject.identifier, :only_path => true)
 		s << "<a href='#{imgLink}' >"						
-			s << "<div class='details'>"
+			s << "<div class='detailsmyprojects'>"
 				s << "<h4>#{currentProject.name}</h4>"
 				s << "#{textilizable(currentProject.short_description, :project => currentProject)}"
 			s << "</div>"
@@ -67,7 +67,7 @@ private
 		if (subProjectsNumber > 0)
 			subprojectsLink = url_for (:controller => 'my_projects', :action => 'index', :id => currentProject.id)					
 			s << "<a href='#{subprojectsLink}'>"
-			s << "<div class='details'><p>#{l(:subprojects_see)} (#{subProjectsNumber})</p></div>"
+			s << "<div class='detailsmyprojects'><p>#{l(:subprojects_see)} (#{subProjectsNumber})</p></div>"
 			s << "</a>"
 		end
 		return s
@@ -104,7 +104,7 @@ private
 		parentProjectLink = linkToBack(currentProject, allProjects) # Get the link to parent project
 		if (parentProjectLink != '')
 			s = "<a href='#{parentProjectLink}'>"
-			s << "<div class='details'><p>#{l(:back)}</p></div>"
+			s << "<div class='detailsmyprojects'><p>#{l(:back)}</p></div>"
 			s << "</a>"					
 		end
 		return s
@@ -113,8 +113,8 @@ private
 	# link to logo.png
 	def linkToImage(currentProject)
 		projectWithAttachments = Project.find(currentProject.id, :include => :attachments)
-		result = image_path ("logo.png", :plugin =>'redmine_gsc_my_projects')
-		projectWithAttachments.attachments.each do |file|
+		result = MyPluginAssetHelpers.plugin_asset_link ("images/logo.png",:plugin =>'redmine_gsc_my_projects')
+        	projectWithAttachments.attachments.each do |file|
 			if (file.filename == "logo.png")
 				result = url_for (:controller => 'attachments', :action => 'download', :id => file.id)
 			end
@@ -147,7 +147,5 @@ private
 		end		
 		return parent
 	end
-
-	
-
 end
+

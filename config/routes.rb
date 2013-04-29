@@ -1,6 +1,6 @@
 # Default routes are no longer supported by Redmine
-# Added default route
+# Added default routel
+get 'my_projects', :to => 'my_projects#index'
+post 'my_projects/:id/:action', :to => 'my_projects'
 
-ActionController::Routing::Routes.draw do |map|
-	map.connect 'my_projects/:action/:id', :controller => 'my_projects'
-end
+

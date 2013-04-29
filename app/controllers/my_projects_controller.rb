@@ -21,15 +21,22 @@ class MyProjectsController < ApplicationController
   
   helper :my_projects
   
-  
   # Get all projects you are member of.
   def index
 
 	@showProjects = []
-	@allProjects = Project.visible(User.current).find(:all, :order => 'lft')
-	
+	show_projects_closed = 0
+	unless params[:closed]
+          show_projects_closed = 1
+        end
+
+	if (show_projects_closed == 1)
+		@allProjects = Project.visible(User.current).find(:all, :order => 'lft', :conditions => ["#{Project.table_name}.status=#{Project::STATUS_ACTIVE}"])
+	else
+		@allProjects = Project.visible(User.current).find(:all, :order => 'lft')
+	end	
 	id = params[:id]
-	
+
 	if !(id)
 		projectsList = @allProjects - getProjectsNoMember()
 		@showProjects = getRootProjects(projectsList)
