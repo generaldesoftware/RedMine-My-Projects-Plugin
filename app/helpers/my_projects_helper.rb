@@ -50,7 +50,7 @@ private
 	# link to currentProject
 	def htmlProject(currentProject)
 		s = ''
-		imgLink = url_for (:action => 'show', :controller => 'projects', :id => currentProject.identifier, :only_path => true)
+		imgLink = url_for :action => 'show', :controller => 'projects', :id => currentProject.identifier, :only_path => true
 		s << "<a href='#{imgLink}' >"						
 			s << "<div class='detailsmyprojects'>"
 				s << "<h4>#{currentProject.name}</h4>"
@@ -65,7 +65,7 @@ private
 		s = ''
 		subProjectsNumber = getSubProjectsCount(currentProject, allProjects)
 		if (subProjectsNumber > 0)
-			subprojectsLink = url_for (:controller => 'my_projects', :action => 'index', :id => currentProject.id)					
+			subprojectsLink = url_for :controller => 'my_projects', :action => 'index', :id => currentProject.id
 			s << "<a href='#{subprojectsLink}'>"
 			s << "<div class='detailsmyprojects'><p>#{l(:subprojects_see)} (#{subProjectsNumber})</p></div>"
 			s << "</a>"
@@ -81,9 +81,9 @@ private
 		if (parentProject != nil)
 			parentParentProject = getFirstParent(parentProject, allProjects)
 			if (parentParentProject != nil)
-				parentProjectLink = url_for (:controller => 'my_projects', :action => 'index', :id => parentParentProject.id)					
+				parentProjectLink = url_for :controller => 'my_projects', :action => 'index', :id => parentParentProject.id
 			else
-				parentProjectLink = url_for (:controller => 'my_projects', :action => 'index', :id => nil)					
+				parentProjectLink = url_for :controller => 'my_projects', :action => 'index', :id => nil
 			end
 		end
 		return parentProjectLink
@@ -113,10 +113,10 @@ private
 	# link to logo.png
 	def linkToImage(currentProject)
 		projectWithAttachments = Project.find(currentProject.id, :include => :attachments)
-		result = MyPluginAssetHelpers.plugin_asset_link ("images/logo.png",:plugin =>'redmine_gsc_my_projects')
+		result = MyPluginAssetHelpers.plugin_asset_link "images/logo.png", :plugin =>'redmine_gsc_my_projects'
         	projectWithAttachments.attachments.each do |file|
 			if (file.filename == "logo.png")
-				result = url_for (:controller => 'attachments', :action => 'download', :id => file.id)
+				result = url_for :controller => 'attachments', :action => 'download', :id => file.id
 			end
 		end
 		return result
